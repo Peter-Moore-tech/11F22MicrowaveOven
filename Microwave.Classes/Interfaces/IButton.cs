@@ -12,5 +12,4 @@ namespace Microwave.Classes.Interfaces
 
         void Press();
     }
-    //Hej Peter Moore din røvbanan
 }
