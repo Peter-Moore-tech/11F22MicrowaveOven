@@ -46,7 +46,6 @@ namespace Microwave.App
 
             System.Console.ReadLine();
 
-            // Kommentar
         }
     }
 }
