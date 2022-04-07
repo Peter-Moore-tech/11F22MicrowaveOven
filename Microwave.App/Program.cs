@@ -41,12 +41,19 @@ namespace Microwave.App
 
             // The simple sequence should now run
 
-            System.Console.WriteLine("When you press enter, the program will stop");
+            //System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
 
-            System.Console.ReadLine();
+            Console.WriteLine("Type E and Enter to extend time by 10 seconds... and X for exit");
+            string my = "";
 
-            // Kommentar
+            while (my != "X")
+            {
+                my = System.Console.ReadLine();
+
+                if (my == "E")
+                    cooker.Add5Seconds();
+            }
         }
     }
 }
