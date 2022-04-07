@@ -44,8 +44,7 @@ namespace Microwave.App
             System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
 
-            System.Console.ReadLine();
-            // Kommentar
+            
         }
     }
 }
