@@ -33,8 +33,8 @@ namespace Microwave.Classes.Controllers
             myDisplay = display;
             myPowerTube = powerTube;
 
-            timer.Expired += new EventHandler(OnTimerExpired);
-            timer.TimerTick += new EventHandler(OnTimerTick);
+            timer.Expired += OnTimerExpired;
+            timer.TimerTick += OnTimerTick;
         }
 
         public void StartCooking(int power, int time)
