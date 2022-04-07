@@ -10,6 +10,7 @@ namespace Microwave.Classes.Controllers
         public IUserInterface UI { set; private get; }
 
         private bool isCooking = false;
+        public int MaxPower { get; set; }
 
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
@@ -22,6 +23,7 @@ namespace Microwave.Classes.Controllers
             IUserInterface ui) : this(timer, display, powerTube)
         {
             UI = ui;
+            MaxPower = powerTube.MaxPower;
         }
 
         public CookController(
@@ -32,6 +34,7 @@ namespace Microwave.Classes.Controllers
             myTimer = timer;
             myDisplay = display;
             myPowerTube = powerTube;
+            MaxPower = powerTube.MaxPower;
 
             timer.Expired += new EventHandler(OnTimerExpired);
             timer.TimerTick += new EventHandler(OnTimerTick);
