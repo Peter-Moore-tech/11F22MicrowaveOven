@@ -16,6 +16,7 @@ namespace Microwave.Test.Integration
         private Display display;
         private PowerTube powerTube;
         private CookController cooker;
+        private int maxPower =700;
 
         private IUserInterface ui;
 
@@ -23,10 +24,9 @@ namespace Microwave.Test.Integration
         public void Setup()
         {
             output = Substitute.For<IOutput>();
-
             timer = new Timer();
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output, maxPower);
 
             ui = Substitute.For<IUserInterface>();
 
