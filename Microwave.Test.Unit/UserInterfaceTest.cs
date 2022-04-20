@@ -275,6 +275,21 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
+        public void Cooking_CookingIsDone_BuzzerBeeped()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetTime
+            startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in cooking
+
+            // Cooking is done
+            uut.CookingIsDone();
+            buzzer.Received(1).BeepThreeTimes();
+        }
+
+        [Test]
         public void Cooking_DoorIsOpened_CookerCalled()
         {
             powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);

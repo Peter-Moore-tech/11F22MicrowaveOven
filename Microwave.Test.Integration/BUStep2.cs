@@ -27,6 +27,7 @@ namespace Microwave.Test.Integration
         private IButton startCancelButton;
 
         private IDoor door;
+        private IBuzzer myBuzzer;
 
         [SetUp]
         public void Setup()
@@ -36,7 +37,7 @@ namespace Microwave.Test.Integration
             powerButton = Substitute.For<IButton>();
             timeButton = Substitute.For<IButton>();
             startCancelButton = Substitute.For<IButton>();
-
+            myBuzzer = Substitute.For<IBuzzer>();
             door = Substitute.For<IDoor>();
 
             timer = new Timer();
@@ -51,7 +52,7 @@ namespace Microwave.Test.Integration
             ui = new UserInterface(
                 powerButton, timeButton, startCancelButton,
                 door, 
-                display, light, cooker);
+                display, light, cooker, myBuzzer);
 
             cooker.UI = ui;
 
