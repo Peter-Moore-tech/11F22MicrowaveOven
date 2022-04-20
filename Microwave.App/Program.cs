@@ -44,7 +44,7 @@ namespace Microwave.App
             //System.Console.WriteLine("When you press enter, the program will stop");
             // Wait for input
 
-            Console.WriteLine("Type E and Enter to extend time by 10 seconds... and X for exit");
+            Console.WriteLine("Type E and press Enter to extend time by 10 seconds... and X for exit");
             string my = "";
 
             while (my != "X")
