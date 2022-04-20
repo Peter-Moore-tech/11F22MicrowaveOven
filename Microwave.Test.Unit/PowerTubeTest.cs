@@ -11,13 +11,23 @@ namespace Microwave.Test.Unit
     {
         private PowerTube uut;
         private IOutput output;
+        private int maxPower;
 
         [SetUp]
         public void Setup()
         {
             output = Substitute.For<IOutput>();
-            uut = new PowerTube(output);
+            maxPower = 700;
+            uut = new PowerTube(output,maxPower);
         }
+
+        [Test]
+        public void Ctor_MaxPower_Correct()
+        {
+            Assert.AreEqual(maxPower, uut.MaxPower);
+        }
+
+
 
         [TestCase(1)]
         [TestCase(50)]

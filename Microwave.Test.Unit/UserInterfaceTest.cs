@@ -19,7 +19,7 @@ namespace Microwave.Test.Unit
 
         private IDisplay display;
         private ILight light;
-
+        private int maxPower = 700;
         private ICookController cooker;
 
         [SetUp]
@@ -32,13 +32,19 @@ namespace Microwave.Test.Unit
             light = Substitute.For<ILight>();
             display = Substitute.For<IDisplay>();
             cooker = Substitute.For<ICookController>();
-
+            cooker.MaxPower.Returns(maxPower);
             uut = new UserInterface(
                 powerButton, timeButton, startCancelButton,
                 door,
                 display,
                 light,
                 cooker);
+        }
+
+        [Test]
+        public void Ctor_MaxPower_Correct()
+        {
+            Assert.AreEqual(maxPower, uut.MaxPower);
         }
 
         [Test]
@@ -81,7 +87,8 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
-        public void Ready_14PowerButton_PowerIs700()
+        public void Ready_14PowerButton_PowerIs
+            ()
         {
             for (int i = 1; i <= 14; i++)
             {

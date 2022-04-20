@@ -22,14 +22,13 @@ namespace Microwave.Test.Integration
         private Button powerButton;
         private Button timeButton;
         private Button startCancelButton;
-
+        private int maxPower =700;
         private Door door;
 
         [SetUp]
         public void Setup()
         {
             output = Substitute.For<IOutput>();
-
             powerButton = new Button();
             timeButton = new Button();
             startCancelButton = new Button();
@@ -38,7 +37,7 @@ namespace Microwave.Test.Integration
 
             timer = new Timer();
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output,maxPower);
 
             light = new Light(output);
 

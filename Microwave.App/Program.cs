@@ -18,7 +18,11 @@ namespace Microwave.App
 
             Display display = new Display(output);
 
-            PowerTube powerTube = new PowerTube(output);
+            System.Console.WriteLine("Enter a maximum power value (W): ");
+
+            var maxPower = Convert.ToInt32(System.Console.ReadLine());
+
+            PowerTube powerTube = new PowerTube(output, maxPower);
 
             Light light = new Light(output);
 
