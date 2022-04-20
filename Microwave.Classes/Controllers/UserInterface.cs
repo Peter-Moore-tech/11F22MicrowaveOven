@@ -28,12 +28,12 @@ namespace Microwave.Classes.Controllers
             ILight light,
             ICookController cooker)
         {
-            powerButton.Pressed += new EventHandler(OnPowerPressed);
-            timeButton.Pressed += new EventHandler(OnTimePressed);
-            startCancelButton.Pressed += new EventHandler(OnStartCancelPressed);
+            powerButton.Pressed += OnPowerPressed;
+            timeButton.Pressed += OnTimePressed;
+            startCancelButton.Pressed += OnStartCancelPressed;
 
-            door.Closed += new EventHandler(OnDoorClosed);
-            door.Opened += new EventHandler(OnDoorOpened);
+            door.Closed += OnDoorClosed;
+            door.Opened += OnDoorOpened;
 
             myCooker = cooker;
             myLight = light;
