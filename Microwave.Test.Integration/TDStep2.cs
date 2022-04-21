@@ -26,6 +26,7 @@ namespace Microwave.Test.Integration
         private ITimer timer;
         private IOutput output;
         private IBuzzer myBuzzer;
+        private int maxPower = 700;
 
         [SetUp]
         public void Setup()
@@ -36,6 +37,7 @@ namespace Microwave.Test.Integration
             startCancelButton = new Button();
 
             powerTube = Substitute.For<IPowerTube>();
+            powerTube.MaxPower.Returns(maxPower);
             timer = Substitute.For<ITimer>();
             output = Substitute.For<IOutput>();
             myBuzzer = Substitute.For<IBuzzer>();

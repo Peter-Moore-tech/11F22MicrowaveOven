@@ -17,10 +17,9 @@ namespace Microwave.Classes.Controllers
         private ILight myLight;
         private IDisplay myDisplay;
         private IBuzzer myBuzzer;
-
         private int powerLevel = 50;
         private int time = 1;
-
+        public int MaxPower { get; set; }
         public UserInterface(
             IButton powerButton,
             IButton timeButton,
@@ -31,17 +30,18 @@ namespace Microwave.Classes.Controllers
             ICookController cooker,
             IBuzzer buzzer)
         {
-            powerButton.Pressed += new EventHandler(OnPowerPressed);
-            timeButton.Pressed += new EventHandler(OnTimePressed);
-            startCancelButton.Pressed += new EventHandler(OnStartCancelPressed);
+            powerButton.Pressed += OnPowerPressed;
+            timeButton.Pressed += OnTimePressed;
+            startCancelButton.Pressed += OnStartCancelPressed;
 
-            door.Closed += new EventHandler(OnDoorClosed);
-            door.Opened += new EventHandler(OnDoorOpened);
+            door.Closed += OnDoorClosed;
+            door.Opened += OnDoorOpened;
 
             myCooker = cooker;
             myLight = light;
             myDisplay = display;
             myBuzzer = buzzer;
+            MaxPower = cooker.MaxPower;
         }
 
         private void ResetValues()
@@ -59,7 +59,7 @@ namespace Microwave.Classes.Controllers
                     myState = States.SETPOWER;
                     break;
                 case States.SETPOWER:
-                    powerLevel = (powerLevel >= 700 ? 50 : powerLevel+50);
+                    powerLevel = (powerLevel >= MaxPower ? 50 : powerLevel+50);
                     myDisplay.ShowPower(powerLevel);
                     break;
             }

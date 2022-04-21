@@ -15,6 +15,7 @@ namespace Microwave.Test.Unit
         private ITimer timer;
         private IDisplay display;
         private IPowerTube powerTube;
+        private int maxPower =700;
 
         [SetUp]
         public void Setup()
@@ -23,8 +24,14 @@ namespace Microwave.Test.Unit
             timer = Substitute.For<ITimer>();
             display = Substitute.For<IDisplay>();
             powerTube = Substitute.For<IPowerTube>();
+            powerTube.MaxPower.Returns(maxPower);
 
             uut = new CookController(timer, display, powerTube, ui);
+        }
+        [Test]
+        public void Ctor_MaxPower_Correct()
+        {
+            Assert.AreEqual(maxPower, uut.MaxPower);
         }
 
         [Test]

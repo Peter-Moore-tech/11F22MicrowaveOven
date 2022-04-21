@@ -28,6 +28,7 @@ namespace Microwave.Test.Integration
 
         private IDoor door;
         private IBuzzer myBuzzer;
+        private int maxPower =700;
 
         [SetUp]
         public void Setup()
@@ -42,7 +43,7 @@ namespace Microwave.Test.Integration
 
             timer = new Timer();
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            powerTube = new PowerTube(output,maxPower);
 
             light = new Light(output);
 
