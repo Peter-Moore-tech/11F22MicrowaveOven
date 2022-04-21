@@ -11,5 +11,6 @@ namespace Microwave.Classes.Interfaces
         int MaxPower { get; }
         void StartCooking(int power, int time);
         void Stop();
+        void Add5Seconds();
     }
 }

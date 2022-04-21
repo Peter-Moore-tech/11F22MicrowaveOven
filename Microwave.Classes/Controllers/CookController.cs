@@ -47,6 +47,12 @@ namespace Microwave.Classes.Controllers
             isCooking = true;
         }
 
+        public void Add5Seconds()
+        {
+            if (isCooking)
+             myTimer.Add5Seconds();
+        }
+
         public void Stop()
         {
             isCooking = false;

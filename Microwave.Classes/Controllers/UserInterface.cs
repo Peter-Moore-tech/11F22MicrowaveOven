@@ -62,6 +62,8 @@ namespace Microwave.Classes.Controllers
                     powerLevel = (powerLevel >= MaxPower ? 50 : powerLevel+50);
                     myDisplay.ShowPower(powerLevel);
                     break;
+               
+
             }
         }
 
@@ -76,6 +78,9 @@ namespace Microwave.Classes.Controllers
                 case States.SETTIME:
                     time += 1;
                     myDisplay.ShowTime(time, 0);
+                    break;
+                case States.COOKING:
+                    myCooker.Add5Seconds();
                     break;
             }
         }
