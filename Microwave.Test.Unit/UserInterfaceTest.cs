@@ -2,6 +2,7 @@
 using Microwave.Classes.Controllers;
 using Microwave.Classes.Interfaces;
 using NSubstitute;
+using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 
 namespace Microwave.Test.Unit
@@ -341,6 +342,23 @@ namespace Microwave.Test.Unit
 
             light.Received(1).TurnOff();
         }
+
+        [Test]
+        public void Cooking_OnTimePressed_myCookerAdd5SecondsCalled()
+        {
+            powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetPower
+            timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in SetTime
+            startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            // Now in cooking
+
+            // Press timebutton
+            timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+
+            cooker.Received(1).Add5Seconds();
+        }
+
 
 
     }
