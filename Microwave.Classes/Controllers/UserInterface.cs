@@ -16,6 +16,7 @@ namespace Microwave.Classes.Controllers
         private ICookController myCooker;
         private ILight myLight;
         private IDisplay myDisplay;
+        private IBuzzer myBuzzer;
         private int powerLevel = 50;
         private int time = 1;
         public int MaxPower { get; set; }
@@ -26,7 +27,8 @@ namespace Microwave.Classes.Controllers
             IDoor door,
             IDisplay display,
             ILight light,
-            ICookController cooker)
+            ICookController cooker,
+            IBuzzer buzzer)
         {
             powerButton.Pressed += OnPowerPressed;
             timeButton.Pressed += OnTimePressed;
@@ -38,6 +40,7 @@ namespace Microwave.Classes.Controllers
             myCooker = cooker;
             myLight = light;
             myDisplay = display;
+            myBuzzer = buzzer;
             MaxPower = cooker.MaxPower;
         }
 
@@ -150,6 +153,8 @@ namespace Microwave.Classes.Controllers
                     myDisplay.Clear();
                     myLight.TurnOff();
                     // Beep 3 times
+                    myBuzzer.BeepThreeTimes();
+
                     myState = States.READY;
                     break;
             }
